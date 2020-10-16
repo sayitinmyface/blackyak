@@ -17,8 +17,9 @@ def home(req):
                     <td colspan="2"> <img src={f_info["img_path"]}></td>
                 </tr>
                 <tr>
-                    <td>wheather </td>
-                    <td>1</td>
+                    <td>
+
+                    </td>
                 </tr>
             </table>
             '''
@@ -30,6 +31,7 @@ def home(req):
         folium.Marker(location=lat_lon,popup=popup).add_to(m)        
     # 
     m = m._repr_html_
+    # 
     # 
     return render(req,'yakmap/home.html',{'map':m})
 
