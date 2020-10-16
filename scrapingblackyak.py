@@ -50,4 +50,7 @@ for f_li in li:
                 'img_path':img_path+image_name,
         }
         mountain_info.insert_one(data)
-    print()
+    driver.close()
+    driver.switch_to_window(driver.window_handles[0])
+    
+    
