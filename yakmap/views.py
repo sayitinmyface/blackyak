@@ -5,13 +5,25 @@ from pymongo import MongoClient
 # 지도에 산 모든 위치 표시 
 def home(req):
     lat_lon = [36.0040,128.1540]
-    m = folium.Map(location=lat_lon,zoom_start=7)
+    m = folium.Map(location=lat_lon,zoom_start=7,tiles='Stamen Terrain')
     # 
     list_info = getInfo('mountain_info')    
     # 
     for f_info in list_info:
         lat_lon = [float(f_info['lat']),float(f_info['lon'])]
-        folium.RegularPolygonMarker(location=lat_lon).add_to(m)
+        # iframe_html = f'''
+        #             <img src="../../static/images/가리산(홍천).jpg" alt="{f_info["mountain_name"]}">
+        # '''
+        # iframe = folium.IFrame(iframe_html,width=700, height=450)
+        # popup = folium.Popup(iframe, max_width=3000)
+        pophtml = folium.Html('<img src="/static/images/가리산(홍천).jpg">',script=True)
+        popup = folium.Popup(pophtml,max_width=2650)
+        html = f'<div style="background-color: aliceblue;">{f_info["mountain_name"]}</div>'
+        # 
+        folium.Marker(location=lat_lon,icon=folium.DivIcon(html=html)).add_to(m)
+        folium.Marker(location=lat_lon,popup=popup).add_to(m)        
+        # text = folium.Marker(location=lat_lon,popup=popup)
+        # m.add_child(text)
     # 
     m = m._repr_html_
     # 
