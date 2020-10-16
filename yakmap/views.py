@@ -7,11 +7,22 @@ def home(req):
     lat_lon = [36.0040,128.1540]
     m = folium.Map(location=lat_lon,zoom_start=7,tiles='Stamen Terrain')
     # 
-    list_info = getInfo('mountain_info')    
+    list_info = getInfo('mountain_info') #산 정보   
     # 
     for f_info in list_info:
         lat_lon = [float(f_info['lat']),float(f_info['lon'])]
-        pophtml = folium.Html(f'<img src={f_info["img_path"]}>',script=True)
+        html = f'''
+            <table border="1">
+                <tr>
+                    <td colspan="2"> <img src={f_info["img_path"]}></td>
+                </tr>
+                <tr>
+                    <td>wheather </td>
+                    <td>1</td>
+                </tr>
+            </table>
+            '''
+        pophtml = folium.Html(html,script=True)
         popup = folium.Popup(pophtml,max_width=2650)
         html = f'<div style="background-color: aliceblue;"><font size="2">{f_info["mountain_name"]}</font></div>'
         # 
@@ -22,7 +33,7 @@ def home(req):
     # 
     return render(req,'yakmap/home.html',{'map':m})
 
-# 산 정보 
+#DB find 
 def getInfo(collection_name):
     db_url = db_url = 'mongodb://192.168.219.105:27017'
     with MongoClient(db_url) as client:
