@@ -16,7 +16,7 @@ def home(req):
         # '''
         # iframe = folium.IFrame(iframe_html,width=700, height=450)
         # popup = folium.Popup(iframe, max_width=3000)
-        pophtml = folium.Html('<img src="/static/images/가리산(홍천).jpg">',script=True)
+        pophtml = folium.Html(f'<img src={f_info["img_path"]}>',script=True)
         popup = folium.Popup(pophtml,max_width=2650)
         html = f'<div style="background-color: aliceblue;"><font size="2">{f_info["mountain_name"]}</font></div>'
         # 

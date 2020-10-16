@@ -34,7 +34,7 @@ for f_li in li:
     visitText = soup.select_one('p.visitText').string
     # 이미지 저장
     img_src = driver.find_element(By.XPATH,'//div[@class="img"]/img').get_attribute('src')
-    image_name = mountain_name+'.'+img_src.split('.')[-1]
+    image_name = img_src.split('/')[-1]
     with urllib.request.urlopen(img_src) as res , open(img_path+image_name,'wb') as f:
         data = res.read()
         f.write(data)
