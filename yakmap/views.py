@@ -18,12 +18,10 @@ def home(req):
         # popup = folium.Popup(iframe, max_width=3000)
         pophtml = folium.Html('<img src="/static/images/가리산(홍천).jpg">',script=True)
         popup = folium.Popup(pophtml,max_width=2650)
-        html = f'<div style="background-color: aliceblue;">{f_info["mountain_name"]}</div>'
+        html = f'<div style="background-color: aliceblue;"><font size="2">{f_info["mountain_name"]}</font></div>'
         # 
         folium.Marker(location=lat_lon,icon=folium.DivIcon(html=html)).add_to(m)
         folium.Marker(location=lat_lon,popup=popup).add_to(m)        
-        # text = folium.Marker(location=lat_lon,popup=popup)
-        # m.add_child(text)
     # 
     m = m._repr_html_
     # 
