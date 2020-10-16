@@ -18,7 +18,6 @@ def home(req):
         lat_lon = [float(f_info['lat']),float(f_info['lon'])]
         # obj = mgr.weather_at_coords(float(f_info['lat']),float(f_info['lon']))
         # w = obj.weather
-        # 
         html = f'''
             <table border="1">
                 <tr>
@@ -39,7 +38,6 @@ def home(req):
         folium.Marker(location=lat_lon,popup=popup).add_to(m)        
     # 
     m = m._repr_html_
-    # 
     # 
     return render(req,'yakmap/home.html',{'map':m})
 
