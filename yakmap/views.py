@@ -19,16 +19,16 @@ def home(req):
         # obj = mgr.weather_at_coords(float(f_info['lat']),float(f_info['lon']))
         # w = obj.weather
         html = f'''
-            <table border="1">
-                <tr>
-                    <td colspan="2"> <img src={f_info["img_path"]}></td>
-                </tr>
-                <tr>
-                    <td>
+                    <table border="1">
+                        <tr>
+                            <td colspan="2"> <img src={f_info["img_path"]}></td>
+                        </tr>
+                        <tr>
+                            <td>
 
-                    </td>
-                </tr>
-            </table>
+                            </td>
+                        </tr>
+                    </table>
             '''
         pophtml = folium.Html(html,script=True)
         popup = folium.Popup(pophtml,max_width=2650)
@@ -38,7 +38,6 @@ def home(req):
         folium.Marker(location=lat_lon,popup=popup).add_to(m)        
     # 
     m = m._repr_html_
-    # 
     return render(req,'yakmap/home.html',{'map':m})
 
 #DB find 

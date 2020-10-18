@@ -25,7 +25,7 @@ for f_li in li:
     lat,lon = tuple(f_li.find_element_by_tag_name('a').text.split(','))
     # 상세보기 클릭
     f_li.find_element_by_tag_name('button').click()
-    # 새탭
+    # 새탭 
     driver.switch_to_window(driver.window_handles[-1])
     # bs4
     html = driver.page_source
