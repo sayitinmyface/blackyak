@@ -15,11 +15,10 @@ def home(req):
         html = f'''
                     <table border="1">
                         <tr>
-                            <td colspan="2"> <img src={f_info["img_path"]}></td>
+                            <td colspan="2"> <img src={f_info["img_path"]} widht="200" height="200"></td>
                         </tr>
                         <tr>
                             <td>
-
                             </td>
                         </tr>
                     </table>
@@ -35,12 +34,12 @@ def home(req):
     return render(req,'yakmap/home.html',{'map':m})
 
 #DB 산 정보 
-def getInfo(db_url = 'mongodb://192.168.0.179:27017',collection_name):
+def getInfo(collection_name,db_url='mongodb://192.168.0.179:27017'):
     with MongoClient(db_url) as client:
         result = list(client['mydb'][collection_name].find())
     return result
 # DB 날씨
-def getWeatherinfo(db_url = 'mongodb://192.168.0.179:27017',lat,lon):
+def getWeatherinfo(lat,lon,db_url='mongodb://192.168.0.179:27017'):
     with MongoClient(db_url) as client:
         result = list(client['mydb'][collection_name].find({'lat':lat,'lon':lon}))
     return result
