@@ -32,6 +32,7 @@ for f_li in li:
     soup = BeautifulSoup(html,'lxml')
     # 상세설명
     visitText = soup.select_one('p.visitText').string
+    visitName = driver.find_element(By.XPATH,'//p[@class="visitName"]/em').text.split()[0]
     # 이미지 저장
     img_src = driver.find_element(By.XPATH,'//div[@class="img"]/img').get_attribute('src')
     image_name = img_src.split('/')[-1]
@@ -47,6 +48,7 @@ for f_li in li:
                 'lat':lat,
                 'lon':lon,
                 'visitText':visitText,
+                'visitName' : visitName,
                 'img_path':img_path+image_name,
         }
         mountain_info.insert_one(data)
