@@ -12,11 +12,24 @@ def home(req):
     # 
     for f_info in list_info:
         lat_lon = [float(f_info['lat']),float(f_info['lon'])]
+        weather = getWeatherinfo(float(f_info['lat']),float(f_info['lon']))        
         html = f'''
-                    <table border="1">
+                    <table border="1" >
                         <tr>
-                            <td> <img src={f_info["img_path"]} widht="200" height="200"></td>
-                            <td></td>
+                            <td colspan="2"> <img src={f_info["img_path"]} widht="200" height="200"></td>
+                            <td>
+                                <tr align="center">
+                                    <td>WEATHER</td><td>CELSIUS</td>
+                                </tr>
+                                <tr>
+                                    <td align="center">
+                                        <img src="{weather['icon_url']}">
+                                    </td>
+                                    <td align="center">
+                                        MAX : {weather['temperature']['temp_max']}<br> MIN : {weather['temperature']['temp_min']}
+                                    </td>
+                                </tr>
+                            </td>
                         </tr>
                     </table>
             '''
@@ -26,6 +39,7 @@ def home(req):
         # 
         folium.Marker(location=lat_lon,icon=folium.DivIcon(html=html)).add_to(m)
         folium.Marker(location=lat_lon,popup=popup).add_to(m)        
+        # folium.RegularPolygonMarker(location=lat_lon,popup=popup).add_to(m)        
     # 
     m = m._repr_html_
     return render(req,'yakmap/home.html',{'map':m})
@@ -38,8 +52,8 @@ def getInfo(collection_name,db_url='mongodb://192.168.0.179:27017'):
 # DB 날씨
 def getWeatherinfo(lat,lon,db_url='mongodb://192.168.0.179:27017'):
     with MongoClient(db_url) as client:
-        result = list(client['mydb'][collection_name].find({'lat':lat,'lon':lon}))
-    return result
+        result = list(client['mydb']['weather_info'].find({'lat':lat,'lon':lon}))
+    return result[0]
 
     
     
