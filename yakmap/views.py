@@ -15,11 +15,8 @@ def home(req):
         html = f'''
                     <table border="1">
                         <tr>
-                            <td colspan="2"> <img src={f_info["img_path"]} widht="200" height="200"></td>
-                        </tr>
-                        <tr>
-                            <td>
-                            </td>
+                            <td> <img src={f_info["img_path"]} widht="200" height="200"></td>
+                            <td></td>
                         </tr>
                     </table>
             '''
