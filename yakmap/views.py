@@ -10,9 +10,11 @@ def home(req):
     m = folium.Map(location=lat_lon,zoom_start=7,tiles='Stamen Terrain')
     #산 정보 get
     list_info = getInfo('mountain_info') 
+    list_visitname = list(set([name['visitName'] for name in list_info]))
     # 
     for f_info in list_info:
         lat_lon = [float(f_info['lat']),float(f_info['lon'])]
+        #날씨 정보
         weather = getWeatherinfo(float(f_info['lat']),float(f_info['lon']))        
         html = f'''
                     <table border="1" sty>
