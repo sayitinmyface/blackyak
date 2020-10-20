@@ -102,6 +102,9 @@ def base(request):
     # 처음 전체 화면 lat,lon
     lat_lon = [36.0040,128.1540]
     m = folium.Map(location=lat_lon,zoom_start=7,tiles='Stamen Terrain')
+    figure = folium.Figure()
+    m.add_to(figure)
+
     # 날씨 정보
     owm = pyowm.OWM('5b457f895ab57ef2daac2b9e32db5319')#api key value
     mgr = owm.weather_manager()
@@ -116,7 +119,7 @@ def base(request):
         html = f'''
             <table border="1">
                 <tr>
-                    <td colspan="2"> <img src={f_info["img_path"]}></td>
+                    <td colspan="1"> <img src={f_info["img_path"]} width="300" height="300"></td>
                 </tr>
                 <tr>
                     <td>
@@ -126,13 +129,14 @@ def base(request):
             </table>
             '''
         pophtml = folium.Html(html,script=True)
-        popup = folium.Popup(pophtml,max_width=2650)
+        popup = folium.Popup(pophtml,max_width=300)
         html = f'<div style="background-color: aliceblue;"><font size="2">{f_info["mountain_name"]}</font></div>'
         # 
         folium.Marker(location=lat_lon,icon=folium.DivIcon(html=html)).add_to(m)
         folium.Marker(location=lat_lon,popup=popup).add_to(m)        
     # 
     m = m._repr_html_
+    # figure.render()
     # 
     # 
     return render(request,'index.html', {'map':m})  
