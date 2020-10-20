@@ -6,7 +6,7 @@ import datetime
 from bs4 import BeautifulSoup
 import urllib.request
 
-db_url = 'mongodb://192.168.219.105:27017'
+db_url = 'mongodb://192.168.0.234:27017'
 url = 'http://bac.blackyak.com/html/challenge/ChallengeVisitList.asp?CaProgram_key=114'
 # 
 img_path = './static/images/'
