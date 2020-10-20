@@ -5,8 +5,9 @@ from selenium.webdriver.common.by import By
 import datetime
 from bs4 import BeautifulSoup
 import urllib.request
+import time
 
-db_url = 'mongodb://192.168.219.105:27017'
+db_url = 'mongodb://192.168.0.179:27017'
 url = 'http://bac.blackyak.com/html/challenge/ChallengeVisitList.asp?CaProgram_key=114'
 # 
 img_path = './static/images/'
@@ -26,13 +27,17 @@ for f_li in li:
     # 상세보기 클릭
     f_li.find_element_by_tag_name('button').click()
     # 새탭 
-    driver.switch_to_window(driver.window_handles[-1])
+    # driver.switch_to_window(driver.window_handles[-1])
+    driver.switch_to.window(driver.window_handles[-1])
     # bs4
     html = driver.page_source
     soup = BeautifulSoup(html,'lxml')
     # 상세설명
     visitText = soup.select_one('p.visitText').string
-    visitName = driver.find_element(By.XPATH,'//p[@class="visitName"]/em').text.split()[0]
+    visitName = driver.find_element(By.XPATH,'//p[@class="visitName"]/em').text
+    if visitName != '':
+        visitName = visitName.split()[0]
+    
     # 이미지 저장
     img_src = driver.find_element(By.XPATH,'//div[@class="img"]/img').get_attribute('src')
     image_name = img_src.split('/')[-1]
@@ -49,10 +54,15 @@ for f_li in li:
                 'lon':lon,
                 'visitText':visitText,
                 'visitName' : visitName,
-                'img_path':img_path+image_name,
+                'img_path':img_path+image_name
         }
         mountain_info.insert_one(data)
+    time.sleep(2)
     driver.close()
-    driver.switch_to_window(driver.window_handles[0])
+    time.sleep(2)
+    # driver.switch_to_window(driver.window_handles[0])
+    driver.switch_to.window(driver.window_handles[0])
+# 
+driver.quit()
     
     

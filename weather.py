@@ -10,6 +10,7 @@ owm = pyowm.OWM('5b457f895ab57ef2daac2b9e32db5319')
 mgr = owm.weather_manager()
 # 
 with MongoClient(db_url) as client:    
+    client['mydb']['weather_info'].delete_many({})    
     mtinfo = list(client['mydb']['mountain_info'].find())
     for info in mtinfo:
         lat = float(info['lat'])
