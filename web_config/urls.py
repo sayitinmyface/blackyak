@@ -15,9 +15,20 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from yakmap import views as yakview
+from yakmap import views as yakviews
+
+
+# urlpatterns = [
+#     path('admin/', admin.site.urls),
+#     path('home/', yakview.home,name='home'),
+#     path('index/', yakview.base, name='base'),
+# ]
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('home', yakview.home,name='home'),
+    path('', yakviews.base, name='base'),
+    path('home/', yakviews.temp_home, name='home'),
+    # path('about', yakviews.about, name='about'),
+    # path('services', yakviews.services, name='services'),
+    # path('contact', yakviews.contact, name='contact'),
 ]
