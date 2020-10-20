@@ -1,11 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+    <script>
+     $(document).ready(function(){
+            $("button").on("click", function() {
+                $.ajax({ // Ajax 요청을 작성하고 GET 방식으로 전송함.
+                    url: "/home",
+                    method: "GET",
+                    dataType:'json'
+                    })       // Ajax 응답을 정상적으로 받으면 실행됨.
+
+                    .done(function(result) {                            
+                        $("#chg_bt").html('1')
+
+                    })
+
+			});
+        });
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
 <body>
-    {{map|safe}}
+   <div id='chg_bt'>
+       {{map|safe}}       
+   </div>
+  <button>변경</button>
+   
 </body>
 </html>
