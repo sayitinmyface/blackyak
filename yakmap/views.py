@@ -48,17 +48,24 @@ def maping(map_info,list_info):
 def index(req):
     # 처음 전체 화면 lat,lon    
     lat_lon = [36.0040,128.1540]
-    list_info = getInfo('mountain_info') 
-    # 
-    m = folium.Map(location=lat_lon,zoom_start=7,tiles='Stamen Terrain')    
     #산 정보 get    
+    list_info = getInfo('mountain_info') 
     list_visitname = list(set([name['visitName'] for name in list_info]))
     list_visitname.sort()
     # 산 정보 지도에 표시
+    m = folium.Map(location=lat_lon,zoom_start=6,tiles='Stamen Terrain')    
     m = maping(m,list_info)
-    # 상세 정보 
-    # list_detail = getInfo('detail_info')
-    data = {'map':m,'list_visitname':list_visitname,'list_info':list_info}
+    # 
+    lat = req.GET.get('lat',lat_lon[0])
+    lon = req.GET.get('lon',lat_lon[1])
+    # 
+    data = {
+            'map':m,
+            'list_visitname':list_visitname,
+            'list_info':list_info,
+            'lat':lat,
+            'lon':lon
+        }
     return render(req,'index.html',data)
 
 # 지역 산 정보

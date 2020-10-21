@@ -64,15 +64,15 @@
     <ul class="nav nav-tabs" id="myTab" role="tablist">
       <li class="nav-item">
         <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home"
-          aria-selected="true">TAB1</a>
+          aria-selected="true">주변</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile"
-          aria-selected="false">TAB2</a>
+          aria-selected="false">날씨</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact"
-          aria-selected="false">TAB3</a>
+          aria-selected="false">상세정보</a>
       </li>
     </ul>
     <div class="tab-content" id="myTabContent">
@@ -137,7 +137,7 @@
 
     <div class="list-group" style="overflow-y:scroll;width:160px; height:450px;">
       {%for name in list_info%}
-      <a href="#" class="list-group-item">{{name.mountain_name}}</a>
+        <a href="?lat={{name.lat}}&lon={{name.lon}}" class="list-group-item">{{name.mountain_name}}</a>
       {%endfor%}
     </div>
     <div class="row">
@@ -156,8 +156,8 @@
    
   var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
       mapOption = {
-          center: new kakao.maps.LatLng(36.0040,128.1540), // 지도의 중심좌표
-          level: 14 // 지도의 확대 레벨
+          center: new kakao.maps.LatLng({{lat}},{{lon}}), // 지도의 중심좌표
+          level: 6 // 지도의 확대 레벨
       };  
   
   // 지도를 생성합니다    
