@@ -32,9 +32,9 @@ for f_li in li:
     # bs4
     html = driver.page_source
     soup = BeautifulSoup(html,'lxml')
-    # 상세설명
+    # 상세설명 
     visitText = soup.select_one('p.visitText').string
-    visitName = driver.find_element(By.XPATH,'//p[@class="visitName"]/em').text
+    visitName = driver.find_element(By.XPATH,'//p[@class="visitName"]/em').text#수정
     if visitName != '':
         visitName = visitName.split()[0]
     
