@@ -20,5 +20,5 @@ from yakmap import views as yakview
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', yakview.index,name='index'),
-    path('local/<str:local>', yakview.local,name='local'),
+    path('<str:local_name>', yakview.local,name='local'),
 ]
