@@ -74,13 +74,15 @@ def local(req,local_name):
     # 산 정보 지도에 표시
     m = maping(m,list_info_mt)
     # 상세 정보 
+    lat = req.GET.get('lat',lat_lon[0])
+    lon = req.GET.get('lon',lat_lon[1])
     data = {
             'map':m,
             'list_visitname':list_visitname,
             'list_info':list_info,
             'list_info_mt':list_info_mt,
-            'lat':lat_lon[0],
-            'lon':lat_lon[1]
+            'lat':lat,
+            'lon':lon
         }
     return render(req,'yakmap/local.html',data)
 
