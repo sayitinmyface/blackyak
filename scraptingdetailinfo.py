@@ -22,9 +22,11 @@ for image in images:
     img_name = image.get_attribute('filename')
     img_src = image.get_attribute('src')
     mountain_name = image.get_attribute('filename').split('산')[0]+'산'
+    time.sleep(1)
     with urllib.request.urlopen(img_src) as res , open(img_path+img_name,'wb') as f:
         data = res.read()
         f.write(data)
+    time.sleep(1)
     #mongo db
     with MongoClient(db_url) as client:
         mydb = client['mydb']
@@ -34,7 +36,6 @@ for image in images:
                 'img_path':img_path+img_name
         }
         detail_info.insert_one(data)
-    # time.sleep(1)
 driver.quit()
     
     
