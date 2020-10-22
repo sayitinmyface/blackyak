@@ -19,7 +19,6 @@ driver.maximize_window()
 div = driver.find_element_by_class_name('searchList')
 li = div.find_elements_by_tag_name('li')
 # 
-# 
 for f_li in li:
     mountain_name = f_li.find_element_by_tag_name('span').text
     # 위도 경도
@@ -27,7 +26,6 @@ for f_li in li:
     # 상세보기 클릭
     f_li.find_element_by_tag_name('button').click()
     # 새탭 
-    # driver.switch_to_window(driver.window_handles[-1])
     driver.switch_to.window(driver.window_handles[-1])
     # bs4
     html = driver.page_source
@@ -60,7 +58,6 @@ for f_li in li:
     time.sleep(2)
     driver.close()
     time.sleep(2)
-    # driver.switch_to_window(driver.window_handles[0])
     driver.switch_to.window(driver.window_handles[0])
 # 
 driver.quit()
