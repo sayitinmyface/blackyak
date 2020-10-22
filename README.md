@@ -30,5 +30,5 @@ Now being served at 192.168.0.171
 <img src="./src/main/resources/image01.png" width="50">
 https://img.youtube.com/vi/{VIDEO ID}/hqdefault.jpg
 https://www.youtube.com/watch?v={VIDEO ID}
-[![SC2 Video](https://img.youtube.com/vi/FNWa292-fHE/hqdefault.jpg)]
-(https://youtu.be/FNWa292-fHE)
+[![CCG](https://user-images.githubusercontent.com/69297240/96834304-c21b4780-147c-11eb-95c6-07627c1b6850.png]
+(https://www.youtube.com/watch?v=l7flGKzA6hQ)
