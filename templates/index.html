@@ -40,7 +40,7 @@
     <div class="list-group">
       
       {%for local in list_visitname%}
-      <a href="{{local|default:'total'}}" class="list-group-item">{{local|default:'전체'}}</a>
+      <a href="{{local|default:'/'}}" class="list-group-item">{{local|default:'전체'}}</a>
       {%endfor%}
     </div>
 
@@ -105,10 +105,6 @@
                     <span class="category_bg store"></span>
                     편의점
                 </li>      
-                <li id="AD5" data-order="6"> 
-                  <span class="category_bg "></span>
-                  숙박
-              </li>  
             </ul>
         </div>
       </div>
