@@ -24,4 +24,11 @@ famous 100 mountains in korea
 - Server configuration
 
 
-The contents and outcome is served at 192.168.0.171
+Now being served at 192.168.0.171
+
+#### screencast
+<img src="./src/main/resources/image01.png" width="50">
+https://img.youtube.com/vi/{VIDEO ID}/hqdefault.jpg
+https://www.youtube.com/watch?v={VIDEO ID}
+[![SC2 Video](https://img.youtube.com/vi/FNWa292-fHE/hqdefault.jpg)]
+(https://youtu.be/FNWa292-fHE)
