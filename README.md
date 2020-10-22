@@ -27,5 +27,6 @@ famous 100 mountains in korea
 Now being served at 192.168.0.171
 
 #### screencast
+https://img.youtube.com/vi/B6QEKvzoP2Y/hqdefault.jpg
 [![Video Label](https://img.youtube.com/vi/B6QEKvzoP2Y/hqdefault.jpg)]
 (https://youtu.be/B6QEKvzoP2Y)
