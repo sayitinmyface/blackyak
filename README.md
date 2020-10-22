@@ -2,7 +2,7 @@
 famous 100 mountains in korea
 <hr>
 
-### Centre Association of Coding aka CCG :tm:
+### Centre Association of Coding aka ***CCG*** :tm:
 
 ## 한국의 100대 명산 정보 제공용 웹페이지
 - 명산정보 :sunrise_over_mountains:
