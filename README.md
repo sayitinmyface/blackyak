@@ -30,3 +30,4 @@ Now being served at 192.168.0.171
 https://img.youtube.com/vi/B6QEKvzoP2Y/hqdefault.jpg
 [![Video Label](https://img.youtube.com/vi/B6QEKvzoP2Y/hqdefault.jpg)]
 (https://youtu.be/B6QEKvzoP2Y)
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/B6QEKvzoP2Y/hqdefault.jpg)](https://www.youtube.com/watch?v=B6QEKvzoP2Y)
