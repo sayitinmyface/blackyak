@@ -7,7 +7,7 @@ from bs4 import BeautifulSoup
 import urllib.request
 import time
 
-db_url = 'mongodb://192.168.0.179:27017'
+db_url = 'mongodb://192.168.0.109:27017'
 url = 'https://varama.tistory.com/538'
 # 
 img_path = './static/images/'

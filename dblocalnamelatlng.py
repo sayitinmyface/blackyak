@@ -1,10 +1,10 @@
 from pymongo import MongoClient
 
-db_url = 'mongodb://192.168.0.179:27017'
+db_url = 'mongodb://192.168.0.109:27017'
 
 with MongoClient(db_url) as client:    
     client['mydb']['local_latlon'].delete_many({})    
-        dic_latlng = {
+    dic_latlng = {
                     '강원도':[37.8662751,127.6873312],
                     '경기도':[37.5980832,126.5354804],
                     '경상남도':[35.1813852,127.8306156],

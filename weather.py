@@ -2,7 +2,7 @@ from pymongo import MongoClient
 import datetime
 import pyowm
 # 날씨 정보 
-db_url = db_url = 'mongodb://192.168.0.179:27017'
+db_url = db_url = 'mongodb://192.168.0.109:27017'
 owm = pyowm.OWM('5b457f895ab57ef2daac2b9e32db5319')
 mgr = owm.weather_manager()
 # 

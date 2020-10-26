@@ -1,7 +1,7 @@
 from django.shortcuts import render
 import folium
 from pymongo import MongoClient
-import geocoder
+#import geocoder
 from django.core.paginator import Paginator
 # from ipyleaflet import *
 # Create your views here.
@@ -94,21 +94,21 @@ def local(req,local_name):
     return render(req,'yakmap/local.html',data)
 
 #DB 산 정보 : mountain_info , 상세 정보사진 : detail_info , 각 도 중앙 위도,경도 : local_latlon
-def getInfo(collection_name,db_url='mongodb://192.168.0.179:27017'):
+def getInfo(collection_name,db_url='mongodb://192.168.0.109:27017'):
     # 모든 정보 
     with MongoClient(db_url) as client:
         result = list(client['mydb'][collection_name].find())
     return result
 
 #DB 산 정보 : mountain_info , 상세 정보사진 : detail_info , 각 도 중앙 위도,경도 : local_latlon    
-def getdetailinfo(collection_name,col_name,value,db_url='mongodb://192.168.0.179:27017'):
+def getdetailinfo(collection_name,col_name,value,db_url='mongodb://192.168.0.109:27017'):
     # 상제 정보
     with MongoClient(db_url) as client:
         result = list(client['mydb'][collection_name].find({col_name:value}))
     return result
 
 # DB 날씨 정보 : weather_info ,
-def getWeatherinfo(lat,lon,db_url='mongodb://192.168.0.179:27017'):
+def getWeatherinfo(lat,lon,db_url='mongodb://192.168.0.109:27017'):
     with MongoClient(db_url) as client:
         result = list(client['mydb']['weather_info'].find({'lat':lat,'lon':lon}))
     return result[0]
